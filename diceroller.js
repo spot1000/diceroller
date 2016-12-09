@@ -22,7 +22,7 @@ function percentage(target, numOfDice, sides, over) {
   
   // check if over or under, return appropriate percentage
   var percentage = diceRoller(target, numOfDice, sides) /
-    Math.pow(numOfDice, sides);
+    Math.pow(sides, numOfDice);
     
   if (over == true) {
   return 1 - percentage;
@@ -32,6 +32,3 @@ function percentage(target, numOfDice, sides, over) {
   }
     
 }
-
-console.log(percentage(6,1,6,true));
-console.log(percentage(1,1,6,false));
