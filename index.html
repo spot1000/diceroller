@@ -3,11 +3,11 @@
 	</head>
 	<body>
 		<h2>Number of dice:</h2>	
-		<button id="dice-">-</button><span id="dice">3</span><button id="dice+">+</button>
+		<input id="dice" min=1 max=20 type="range" defaultValue=3></input>
 		<h2>Sides per die:</h2>
-		<button id="sides-">-</button><span id="sides">6</span><button id="sides+">+</button>
+		<input id="sides" min=1 max=20 type="range" defaultValue=6></input>
 		<h2>Threshold value:</h2>
-		<button id="thresh-">-</button><span id="thresh">8</span><button id="thresh+">+</button>
+		<input id="thresh" min=1 max=20 type="range" defaultValue=8></input>
 		<h2>Change of rolling threshold value or less:</h2><span id="chance"></span>
 	</body>
 	<script type="text/javascript" src="diceroller.js"></script>
