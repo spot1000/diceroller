@@ -17,3 +17,10 @@ function calculate() {
 
 document.getElementById("chance").innerHTML = percentage(7,2,6, false);
 //calculate();
+
+document.onload(function() {
+    document.getElementById("diceView").value = dice.value;
+    document.getElementById("sidesView").value = sides.value;
+    document.getElementById("threshView").value = thresh.value;
+    
+})
