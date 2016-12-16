@@ -2,19 +2,18 @@ var dice = document.getElementById("dice"),
     sides = document.getElementById("sides"),
     thresh = document.getElementById("thresh");
     
-function assignOnclick(element) {
-   //element.onchange = calculate;
-   } 
-
-
-assignOnclick(dice);
-assignOnclick(sides);
-assignOnclick(thresh);
-
-function calculate() {
-  document.getElementById("chance").innerHTML = percentage(
-    parseInt(thresh.value), parseInt(dice.value),
-    parseInt(sides.value), false); 
+function displayValue(element, value) {
+    document.getElementById(element).value = value;
+    calculate();
 }
 
-calculate();
+function calculate() {
+    const sidesVar = parseInt(sides.value),
+        threshVar = parseInt(thresh.value),
+        diceVar = parseInt(dice.value);
+  document.getElementById("chance").innerHTML = percentage( sidesVar, diceVar,
+    threshVar, false);
+}
+
+document.getElementById("chance").innerHTML = percentage(7,2,6, false);
+//calculate();

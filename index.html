@@ -3,12 +3,15 @@
 	</head>
 	<body>
 		<h2>Number of dice:</h2>	
-		<input id="dice" min=1 max=20 type="range" defaultValue=3></input>
+		<input id="dice" min=1 max=5 type="range" defaultValue=8 onchange="displayValue('diceView', this.value);"></input>
+		<input type='number' id='diceView' onchange="dice.value = this.value; calculate();"></input>
 		<h2>Sides per die:</h2>
-		<input id="sides" min=1 max=20 type="range" defaultValue=6></input>
+		<input id="sides" min=1 max=12 type="range" defaultValue=8 onchange="displayValue('sidesView', this.value);"></input>
+		<input type='number' id='sidesView' onchange="sides.value = this.value; calculate();"></input>
 		<h2>Threshold value:</h2>
-		<input id="thresh" min=1 max=20 type="range" defaultValue=8></input>
-		<h2>Change of rolling threshold value or less:</h2><span id="chance"></span>
+		<input id="thresh" min=1 max=25 type="range" defaultValue=8 onchange="displayValue('threshView', this.value);"></input>
+		<input type='number' id='threshView' onchange="thresh.value = this.value; calculate();"></input>
+		<h2>Chance of rolling threshold value or less:</h2><span id="chance"></span>
 	</body>
 	<script type="text/javascript" src="diceroller.js"></script>
 	<script type="text/javascript" src="ui.js"></script>
