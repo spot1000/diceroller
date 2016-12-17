@@ -15,12 +15,10 @@ function calculate() {
     threshVar, false);
 }
 
-document.getElementById("chance").innerHTML = percentage(7,2,6, false);
+document.getElementById("chance").innerHTML = percentage(thresh.value,dice.value,sides.value, false);
 //calculate();
 
-document.onload(function() {
-    document.getElementById("diceView").value = dice.value;
-    document.getElementById("sidesView").value = sides.value;
-    document.getElementById("threshView").value = thresh.value;
-    
-})
+document.getElementById("threshView").value = thresh.value;
+document.getElementById("sidesView").value = sides.value;
+document.getElementById("diceView").value = dice.value;
+console.log(thresh.value)
