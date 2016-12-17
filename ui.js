@@ -8,14 +8,18 @@ function displayValue(element, value) {
 }
 
 function calculate() {
+    console.log(parseInt(thresh.value));
+    console.log(parseInt(dice.value));
+    console.log(parseInt(sides.value));
+    console.log(percentage(9,3,6,false))
     const sidesVar = parseInt(sides.value),
         threshVar = parseInt(thresh.value),
         diceVar = parseInt(dice.value);
-  document.getElementById("chance").innerHTML = percentage( sidesVar, diceVar,
-    threshVar, false);
+  document.getElementById("chance").innerHTML = percentage(threshVar, diceVar,
+    sidesVar, false);
 }
 
-document.getElementById("chance").innerHTML = percentage(thresh.value,dice.value,sides.value, false);
+document.getElementById("chance").innerHTML = percentage(9,2,6, false);
 //calculate();
 
 document.getElementById("threshView").value = thresh.value;
