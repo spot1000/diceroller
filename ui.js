@@ -1,28 +1,59 @@
-var dice = document.getElementById("dice"),
-    sides = document.getElementById("sides"),
-    thresh = document.getElementById("thresh");
-    
+var dieNames = ["4", "6", "8", "10", "12", "20"];
+var dice = {};
+
+var thresh = document.getElementById("thresh"),
+    diePool = document.getElementById("diePool");
+
+function dieRemoveFactory(id) {
+	return function() {
+		document.getElementById(id).remove();
+		calculate();
+	}
+}
+
+function onclickFactory(dieName) {
+	return function() {
+		id = (new Date()).getTime();
+		die = document.createElement('button');
+		die.sides = parseInt(dieName);
+		die.style.color = "white";
+		die.style.backgroundColor = "green";
+		die.id = id;
+		die.onclick = dieRemoveFactory(id);
+		die.appendChild(document.createTextNode("d" + dieName));
+		diePool.appendChild(die);
+		calculate();
+	}
+}
+
+for (dieName of dieNames) {
+	dice[dieName] = document.getElementById(dieName);
+	dice[dieName].onclick = onclickFactory(dieName);
+}
+		
 function displayValue(element, value) {
-    document.getElementById(element).value = value;
-    calculate();
+	document.getElementById(element).value = value;
+	calculate();
 }
 
+function getDiceInPool() {
+	dice = [];
+	node = diePool.firstChild;
+	while(node) {
+		if (node.nodeType != 3) {
+			dice.push(node.sides);
+		}
+		node = node.nextSibling;
+	}
+	return dice;
+}
+	
 function calculate() {
-    console.log(parseInt(thresh.value));
-    console.log(parseInt(dice.value));
-    console.log(parseInt(sides.value));
-    console.log(percentage(9,3,6,false))
-    const sidesVar = parseInt(sides.value),
-        threshVar = parseInt(thresh.value),
-        diceVar = parseInt(dice.value);
-  document.getElementById("chance").innerHTML = percentage(threshVar, diceVar,
-    sidesVar, false);
+  var threshVar = parseInt(thresh.value);
+  document.getElementById("chance").innerHTML = 
+		percentage(threshVar, getDiceInPool(), false);
 }
-
-document.getElementById("chance").innerHTML = percentage(9,2,6, false);
-//calculate();
 
 document.getElementById("threshView").value = thresh.value;
-document.getElementById("sidesView").value = sides.value;
-document.getElementById("diceView").value = dice.value;
-console.log(thresh.value)
+
+calculate();
