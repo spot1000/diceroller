@@ -23,7 +23,7 @@ function onclickFactory(dieName) {
 		die.appendChild(document.createTextNode("d" + dieName));
 		diePool.appendChild(die);
 		calculate();
-    changeMax();
+    changeMaxMin();
 	}
 }
 
@@ -55,12 +55,14 @@ function calculate() {
 		percentage(threshVar, getDiceInPool(), false);
 }
 
-function changeMax() {
+function changeMaxMin() {
   var thresh = document.getElementById('thresh');
   var newMax = getDiceInPool().reduce(function(a,b) {
     return a+b
   });
+  var newMin = getDiceInPool();
   thresh.setAttribute('max', newMax);
+  thresh.setAttribute('min', newMin.length);
 
 }
 
