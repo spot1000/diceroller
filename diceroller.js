@@ -1,39 +1,61 @@
 function percentage(target, diceInPool, over) {
-  
-	console.log("Dice in pool: ", diceInPool);
-	function diceRoller(target, dice, count = 0) {
 
-		console.log(dice);
-		if (dice.length == 0)
-			return 1;
+// creates an array of possible results from 0 to target
+  function threshReset(target, firstDice, masterArr) {
+    var threshPool = []
+    for (var x = 0; x <= target; x++) {
+      threshPool.push(0);
+    }
+    if (target < firstDice) {
+      threshPool = threshPool.slice(0,target+1); //check for one dice case
+    }
+    if (masterArr) { // sets possible results for first dice
+      for (var x = 1; x <= firstDice; x++) {
+        threshPool[x] = 1;
+      }
+      if (target < firstDice) {
+        threshPool = threshPool.slice(0,target+1); //check for one dice case
+      }
+    }
+    return threshPool;
+  }
 
-    var total = 0; // counter to check possibilities of rolls
-    
-    if (dice.length == 1) {
-      for (var x = 1; x <= dice[0]; x++) {
-        if (x + count <= target){
-          total++;
+// dice roller function, returns total number of possible rolls to achieve target or less
+  function diceRoller(target, dice) {
+
+    var deeOne = threshReset(target, dice[0], true);
+    var deeTwo = threshReset(target, dice[0], false);
+    var deethree = threshReset(target, dice[0], false);
+
+    for (var q = 1; q < dice.length; q++) {
+
+      for(var w = 1; w <= deeOne.length; w++) {
+        for (var e = 1; e <= dice[q]; e++) {
+          if (deeOne[w] > 0 && e+w <= target){
+            deeTwo[e+w] += deeOne[w];
+            }
+          }
         }
+        deeOne = deeTwo.slice();
+        deeTwo = deethree.slice();
+        console.log(deeOne);
       }
-      return total;
-    }
-    else {
-      for (var q = 1; q <= dice[0]; q++) {
-        total += diceRoller(target, dice.slice(1), q+count);
-      }
-      return total;
-    }
-  } 
-  
+
+    var total = deeOne.reduce(function(a,b){
+      return a+b;
+    });
+    return total
+  }
+
   // check if over or under, return appropriate percentage
   var percentage = diceRoller(target, diceInPool) /
     dice.reduce(function(acc, sides) { return acc * sides; }, 1);
-    
+
   if (over == true) {
   return 1 - percentage;
-  } 
+  }
   else {
     return percentage;
   }
-    
+
 }

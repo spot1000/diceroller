@@ -30,7 +30,7 @@ for (dieName of dieNames) {
 	dice[dieName] = document.getElementById(dieName);
 	dice[dieName].onclick = onclickFactory(dieName);
 }
-		
+
 function displayValue(element, value) {
 	document.getElementById(element).value = value;
 	calculate();
@@ -47,13 +47,14 @@ function getDiceInPool() {
 	}
 	return dice;
 }
-	
+
 function calculate() {
   var threshVar = parseInt(thresh.value);
-  document.getElementById("chance").innerHTML = 
+  document.getElementById("chance").innerHTML =
 		percentage(threshVar, getDiceInPool(), false);
 }
 
 document.getElementById("threshView").value = thresh.value;
 
 calculate();
+console.log(getDiceInPool());
