@@ -8,6 +8,7 @@ function dieRemoveFactory(id) {
 	return function() {
 		document.getElementById(id).remove();
 		calculate();
+    changeMaxMin();
 	}
 }
 
@@ -60,9 +61,9 @@ function changeMaxMin() {
   var newMax = getDiceInPool().reduce(function(a,b) {
     return a+b
   });
-  var newMin = getDiceInPool();
+  var newMin = getDiceInPool().length;
   thresh.setAttribute('max', newMax);
-  thresh.setAttribute('min', newMin.length);
+  thresh.setAttribute('min', newMin);
 
 }
 
