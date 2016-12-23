@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding; 0 20px;
+  text-align: center;
+  /*border: solid;
+  border-color: black;*/
+}
+
+
+.addDice {
+  padding:10px;
+  width: 200px;
+  max-width: 200px;
+  /*border: solid;
+  border-color: black;*/
+}
+
+input {
+  text-align: center;
+}
+
+button {
+  text-align: center;
+  margin: 2px;
+  width: 40px;
+}
+
+
+.deePool {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  width: 200px;
+  max-width: 200px;
+  width: fixed;
+  min-height: 90px;
+  /*border: solid;
+  border-color: black;*/
+}
+
+.thresholdVal {
+  padding: 10px;
+  width: 200px;
+  max-width: 200px;
+  /*border: solid;
+  border-color: black;*/
+}
+
+#titleName {
+  text-align: center;
+}

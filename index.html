@@ -1,17 +1,41 @@
-<html>
-	<head>
-	</head>
-	<body>
-		<h4>Click to add dice to the pool:</h4>
-		<button id="4">d4</button><button id="6">d6</button><button id="8">d8</button><button id ="10">d10</button><button id="12">d12</button><button id="20">d20</button>
-		<h3>Die Pool:</h3>
-		<div id="diePool">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel='stylesheet' href="css/styles.css" type='text/css' />
+	<title>Dice Roller 3000</title>
+</head>
+<body>
+	<h1 id='titleName'>Dice Roller 3000*</h1>
+	<div class='container'>
+		<div class="addDice">
+			<h3>Add dice to the pool:</h3>
+			<div>
+				<button id="4">d4</button><button id="6">d6</button><button id="8">d8</button>
+			</div>
+			<div>
+				<button id ="10">d10</button><button id="12">d12</button><button id="20">d20</button>
+			</div>
 		</div>
-		<h3>Threshold value:</h3>
-		<input id="thresh" min=1 max=25 type="range" value = 9 onchange="displayValue('threshView', this.value);"></input>
-		<input type='number' id='threshView' value="" onchange="thresh.value = this.value; calculate();"></input>
-		<h3>Chance of rolling threshold value or less:</h2><span id="chance"></span>
-	</body>
+
+		<div class='deePool'>
+			<h3>Die Pool:</h3>
+			<div id="diePool">
+			</div>
+		</div>
+
+		<div class='thresholdVal'>
+			<h3>Threshold value:</h3>
+			<input id="thresh" min=1 max=25 type="range" value = 9 onchange="displayValue('threshView', this.value);"></input>
+			<input type='number' id='threshView' value="" onchange="thresh.value = this.value; calculate();"></input>
+			<h3>Chance of rolling threshold value or less:</h2><span id="chance"></span>
+		</div>
+
+	</div>
+	<h6>*working title</h6>
+</body>
 	<script type="text/javascript" src="js/diceroller.js"></script>
 	<script type="text/javascript" src="js/ui.js"></script>
 </html>
