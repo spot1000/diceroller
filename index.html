@@ -30,7 +30,7 @@
 		<div class='thresholdVal'>
 			<h3>Threshold value:</h3>
 			<input id="thresh" min=1 max=25 type="range" value=9 onchange="displayValue('threshView', this.value);"></input>
-			<input type='number' id='threshView' value="" onchange="thresh.value = this.value; calculate();"></input>
+			<input type='number' id='threshView' value="" onchange="thresh.value = this.value; calculate(underIsTrue);"></input>
 		</div>
 	</div>
 	<div class='container'>

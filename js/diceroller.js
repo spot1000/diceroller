@@ -1,4 +1,4 @@
-function percentage(target, diceInPool, over) {
+function percentage(target, diceInPool, under) {
 
 // creates an array of possible results from 0 to target
   function threshReset(target, firstDice, masterArr) {
@@ -38,7 +38,7 @@ function percentage(target, diceInPool, over) {
         }
         deeOne = deeTwo.slice();
         deeTwo = deethree.slice();
-        console.log(deeOne);
+        
       }
 
     var total = deeOne.reduce(function(a,b){
@@ -51,11 +51,11 @@ function percentage(target, diceInPool, over) {
   var percentage = diceRoller(target, diceInPool) /
     dice.reduce(function(acc, sides) { return acc * sides; }, 1);
 
-  if (over == true) {
-  return 1 - percentage;
+  if (under == true) {
+  return percentage;
   }
   else {
-    return percentage;
+    return 1 - percentage;
   }
 
 }
