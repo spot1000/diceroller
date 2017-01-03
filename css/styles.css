@@ -50,3 +50,7 @@ button {
 #titleName {
   text-align: center;
 }
+
+#odds {
+  width: 100px;
+}

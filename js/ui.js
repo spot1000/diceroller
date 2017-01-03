@@ -2,7 +2,10 @@ var dieNames = ["4", "6", "8", "10", "12", "20"];
 var dice = {};
 
 var thresh = document.getElementById("thresh"),
-    diePool = document.getElementById("diePool");
+    diePool = document.getElementById("diePool"),
+    odds = document.getElementById("odds"),
+
+    underIsTrue = true;
 
 function dieRemoveFactory(id) {
 	return function() {
@@ -67,7 +70,27 @@ function changeMaxMin() {
 
 }
 
+function overUnderCheck() {
+  if (underIsTrue){
+    underIsTrue = false;
+    console.log(underIsTrue);
+    document.getElementById('rollUnder').innerHTML = 'Chance of rolling threshold value or more:'
+    document.getElementById('odds').innerHTML = "Check Under Odds?"
+  } else {
+    underIsTrue = true;
+    console.log(underIsTrue);
+    document.getElementById('rollUnder').innerHTML = 'Chance of rolling threshold value or less:'
+    document.getElementById('odds').innerHTML = "Check Over Odds?"
+  }
+}
+
+odds.onclick = function() {
+  overUnderCheck();
+}
+
+
 document.getElementById("threshView").value = thresh.value;
 
 calculate();
 console.log(getDiceInPool());
+console.log(underIsTrue);
